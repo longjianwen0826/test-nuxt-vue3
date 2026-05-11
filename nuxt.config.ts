@@ -30,6 +30,7 @@ export default defineNuxtConfig({
         
         ssr: {
             noExternal: [
+                'vueuc', // 新增：确保 vueuc 被正确打包进 SSR
                 'moment',
                 'naive-ui',
                 '@juggle/resize-observer',
