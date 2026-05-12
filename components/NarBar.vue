@@ -83,7 +83,7 @@
     }
   ]
 </script>
-<style>
+<style scoped>
 .navbar{
   z-index: 1000;
    @apply bg-white fixed top-0 left-0 right-0 shadow-sm;
