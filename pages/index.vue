@@ -9,7 +9,7 @@
       </div>
     </section>
 
-    <!-- 2产品亮点 -->
+    <!-- 产品亮点 -->
     <section class="py-16 bg-gray-50">
       <div class="container">
         <h2 class="text-3xl font-bold text-center mb-12">核心优势</h2>
