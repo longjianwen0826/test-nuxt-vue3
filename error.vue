@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[80]">
+  <div class="pt-[80px]">
     <n-result
       status="500"
       title="500 服务器错误"
