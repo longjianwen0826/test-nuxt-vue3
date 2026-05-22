@@ -28,4 +28,16 @@ onMounted(() => {
   background: rgba(243, 244, 246, var(--tw-bg-opacity));
   z-index: 9999;
 }
+
+</style>
+<style>
+/* 万能隐藏滚动条 */
+html{
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
 </style>

@@ -9,11 +9,12 @@
             <p class="text-gray-600">我们坚持“客户第一、创新驱动、专业专注、合作共赢”的核心价值观。</p>
           </div>
           <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-            <span class="text-gray-500">公司图片</span>
+            <img :src="getImageUrl('14.png','/img/utils/')" class="w-[100%] h-[100%] "/>
           </div>
         </div>
       </div>
     </section>
 </template>
 <script setup>
+import { getImageUrl } from "@/utils/image.ts"
 </script>

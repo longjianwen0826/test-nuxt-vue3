@@ -20,14 +20,14 @@
       </div>
         
       
-      <n-button circle class="ml-auto mr-3">
+      <!-- <n-button circle class="ml-auto mr-3">
         <template #icon>
           <n-icon size="20"><Search/></n-icon>
         </template>
-      </n-button>
+      </n-button> -->
       <!-- 头像点击多功能选择 -->
-      <n-dropdown :options="options">
-         <n-avatar round size="small" :src="getImageUrl('avatar')"/>
+      <n-dropdown :options="options" >
+         <n-avatar round size="small" :src="getImageUrl('avatar.png')" alt="头像" class="ml-auto"/>
       </n-dropdown>
       
       <!-- 移动端侧边菜单-->
@@ -49,46 +49,38 @@
 <script setup>
   import { Search } from '@vicons/ionicons5'
   import { getImageUrl } from "@/utils/image.ts"
+  import { userInfo } from "@/utils/userMessage"
   const route = useRoute()
   const menuOpen = ref(false)
-  const menus = [
-    {
+  let menus = []
+  const updateRoute = () =>{
+    menus = [{
       name: '首页',
       path: '/'
-    },
-    {
-      name: '拼团',
-      path: '/list/group/1'
-    },
-    {
-      name: '秒杀',
-      path: '/list/flashsale/2'
-    },
-    {
-      name: '直播',
-      path: '/list/live/3'
-    },
-    {
-      name: '专栏',
-      path: '/list/book/4'
-    },
-    {
-      name: '电子书',
-      path: '/list/column/5'
-    },
-    {
-      name: '课程',
-      path: '/list/course/6'
-    },
-    {
-      name: '关于',
-      path: '/bbs/0/1'
-    },
-    {
-      name: '联系',
-      path: '/paper/1'
-    },
-  ]
+    }]
+    userInfo.forEach( (item) => {
+      menus.push(
+        {
+          name: item.name,
+          path: `/list/live/${item.id}`
+        }
+      )
+    })
+    menus.push(
+      {
+        name: '关于',
+        path: '/bbs/0/1'
+      },
+    )
+    menus.push(
+      {
+        name: '联系',
+        path: '/paper/1'
+      },
+    )
+  }
+  updateRoute()
+
   function handelOpen(path){
     navigateTo(path)
   }

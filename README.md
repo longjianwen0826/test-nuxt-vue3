@@ -56,7 +56,7 @@ yarn build
 bun run build
 ```
 
-服务器重启
+服务器pm2重启
 pm2 restart nuxt-app
 
 Locally preview production build:
