@@ -20,14 +20,9 @@
       </div>
         
       
-      <!-- <n-button circle class="ml-auto mr-3">
-        <template #icon>
-          <n-icon size="20"><Search/></n-icon>
-        </template>
-      </n-button> -->
       <!-- 头像点击多功能选择 -->
-      <n-dropdown :options="options" >
-         <n-avatar round size="small" :src="getImageUrl('avatar.png')" alt="头像" class="ml-auto"/>
+      <n-dropdown :options="options" @select="handleSelect">
+         <n-avatar round size="small" :src="userStore.userInfo.ImageUrl+userStore.userInfo.avatar" alt="头像" class="ml-auto"/>
       </n-dropdown>
       
       <!-- 移动端侧边菜单-->
@@ -47,9 +42,11 @@
   <div class="w-[100%] h-[60px]"></div>
 </template>
 <script setup>
-  import { Search } from '@vicons/ionicons5'
-  import { getImageUrl } from "@/utils/image.ts"
   import { userInfo } from "@/utils/userMessage"
+  import { useRouter } from 'nuxt/app'
+  import { useUserStore } from '@/stores/user'
+  const userStore = useUserStore()
+  const router = useRouter()
   const route = useRoute()
   const menuOpen = ref(false)
   let menus = []
@@ -95,7 +92,15 @@
       label: '退出登录',
       key: 'logout',
     }
-  ]
+  ] 
+  const handleSelect =  (key) => {
+    if(key == 'logout') {
+      userStore.logout()
+      router.push('/login')
+    }else{
+      router.push('/user')
+    }
+  }
 </script>
 <style scoped>
 .navbar{

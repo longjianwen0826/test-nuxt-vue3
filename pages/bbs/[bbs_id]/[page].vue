@@ -17,4 +17,10 @@
 </template>
 <script setup>
 import { getImageUrl } from "@/utils/image.ts"
+// const { imageList, loadCosFiles } = useCosImages()
+
+// onMounted(async () => {
+//   await loadCosFiles()
+//   console.log('COS 文件夹所有图片：', imageList.value)
+// })
 </script>

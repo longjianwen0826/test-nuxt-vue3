@@ -13,8 +13,19 @@ export default defineNuxtConfig({
         // 配置构建选项
     },
     modules: [
-       '@nuxt/eslint', 'nuxt-windicss' // 配置使用的 Nuxt.js 模块
+       '@nuxt/eslint', 'nuxt-windicss', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt'  // 配置使用的 Nuxt.js 模块
     ],
+    pinia: {
+        autoImports: ['defineStore']
+    },
+    // 全局持久化配置：服务端用 cookie，客户端用 localStorage
+    piniaPluginPersistedstate: {
+        cookieOptions: {
+        sameSite: 'strict',
+        secure: process.env.NODE_ENV === 'production'
+        },
+        storage: 'cookies' // 服务端走 cookie，客户端自动切 localStorage
+    },
     plugins: [
         // 配置使用的插件
     ],

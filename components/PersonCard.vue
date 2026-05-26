@@ -95,7 +95,7 @@
                 <!-- 视频 -->
                 <video
                   v-if="imgName.endsWith('.mp4')"
-                  :src="getImageUrl(imgName, person.ImageUrl)"
+                  :src="person.ImageUrl+imgName"
                   controls
                   controlslist="nodownload nofullscreen noremoteplayback"
                   disablepictureinpicture
@@ -105,17 +105,11 @@
                 <!-- 图片 + 点击预览 -->
                 <img
                   v-else
-                  :src="getImageUrl(imgName, person.ImageUrl)"
+                  :src="person.ImageUrl+imgName"
                   :alt="imgName"
                   class="w-full h-full object-cover cursor-pointer"
-                  @click="previewImage(getImageUrl(imgName, person.ImageUrl))"
+                  @click="previewImage(person.ImageUrl+imgName)"
                 />
-                <!-- <n-image
-                  :alt="imgName"
-                  class="w-full h-full object-cover cursor-pointer"
-                  v-else
-                  :src="getImageUrl(imgName, person.ImageUrl)"
-                /> -->
               </n-carousel-item>
             </n-carousel>
 
@@ -132,7 +126,6 @@
 </template>
 
 <script setup>
-import { getImageUrl } from "@/utils/image.ts"
 import { ref } from 'vue'
 
 // props 接收
