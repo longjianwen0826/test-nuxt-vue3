@@ -68,7 +68,7 @@ const form = reactive({
 const rules = {
   account: {
     required: true,
-    message: '请输入你的狗名（拼音版噢😯））',
+    message: '请输入你的狗名😯',
     trigger: ['input']
   },
   password: {
@@ -178,6 +178,6 @@ onMounted(() => {
 .is_checked{
     position: absolute;
     right: 0;
-    bottom: -80%;
+    bottom: -100%;
 }
 </style>

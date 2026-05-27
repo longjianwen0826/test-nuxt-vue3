@@ -22,7 +22,7 @@
       
       <!-- 头像点击多功能选择 -->
       <n-dropdown :options="options" @select="handleSelect">
-         <n-avatar round size="small" :src="userStore.userInfo.ImageUrl+userStore.userInfo.avatar" alt="头像" class="ml-auto"/>
+         <n-avatar round size="small" :src="getImageUrl(userStore.userInfo.avatar, userStore.userInfo.ImageUrl)" alt="头像" class="ml-auto"/>
       </n-dropdown>
       
       <!-- 移动端侧边菜单-->
@@ -42,6 +42,7 @@
   <div class="w-[100%] h-[60px]"></div>
 </template>
 <script setup>
+  import { getImageUrl } from "@/utils/image"
   import { userInfo } from "@/utils/userMessage"
   import { useRouter } from 'nuxt/app'
   import { useUserStore } from '@/stores/user'

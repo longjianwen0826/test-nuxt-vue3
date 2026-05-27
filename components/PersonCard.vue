@@ -31,7 +31,7 @@
                    hover:rotate-6 hover:scale-105 transition-all duration-500"
           >
             <img
-              :src="person.ImageUrl + person.avatar"
+              :src="getImageUrl( person.avatar, person.ImageUrl)"
               :alt="person.name"
               class="w-full h-full object-cover"
             />
@@ -95,7 +95,7 @@
                 <!-- 视频 -->
                 <video
                   v-if="imgName.endsWith('.mp4')"
-                  :src="person.ImageUrl+imgName"
+                  :src="getImageUrl(imgName, person.ImageUrl)"
                   controls
                   controlslist="nodownload nofullscreen noremoteplayback"
                   disablepictureinpicture
@@ -105,10 +105,10 @@
                 <!-- 图片 + 点击预览 -->
                 <img
                   v-else
-                  :src="person.ImageUrl+imgName"
+                  :src="getImageUrl(imgName, person.ImageUrl)"
                   :alt="imgName"
                   class="w-full h-full object-cover cursor-pointer"
-                  @click="previewImage(person.ImageUrl+imgName)"
+                  @click="previewImage(getImageUrl(imgName, person.ImageUrl))"
                 />
               </n-carousel-item>
             </n-carousel>
@@ -127,6 +127,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { getImageUrl } from "@/utils/image"
 
 // props 接收
 const props = defineProps({

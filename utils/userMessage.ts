@@ -1,8 +1,7 @@
-import { httptsCos } from "@/utils/image"
 const userInfo = [
   {
     id: 1,
-    ImageUrl: httptsCos+'/img/jianwen/',// 资源路径
+    ImageUrl: '/img/jianwen/',// 资源路径
     avatar: 'avatar.png',
     name: '龙建文',
     nameEn: 'jianwen.long',
@@ -39,7 +38,7 @@ const userInfo = [
   },
   {
     id: 2,
-    ImageUrl: httptsCos+'/img/yongbin/',// 资源路径
+    ImageUrl: '/img/yongbin/',// 资源路径
     avatar: 'avatar.png',
     name: '罗勇斌',
     nameEn: 'yongbin.luo',
@@ -71,7 +70,7 @@ const userInfo = [
   },
   {
     id: 3,
-    ImageUrl: httptsCos+'/img/yongyuan/',// 资源路径
+    ImageUrl: '/img/yongyuan/',// 资源路径
     avatar: 'avatar.png',
     name: '罗泳斌',
     nameEn: 'yongyuan.luo',
@@ -103,7 +102,7 @@ const userInfo = [
   },
   {
     id: 4,
-    ImageUrl: httptsCos+'/img/zhijia/',// 资源路径
+    ImageUrl: '/img/zhijia/',// 资源路径
     avatar: 'avatar.png',
     name: '罗志佳',
     nameEn: 'zhijia.luo',
@@ -135,7 +134,7 @@ const userInfo = [
   },
   {
     id: 5,
-    ImageUrl: httptsCos+'/img/huanyuan/',// 资源路径
+    ImageUrl: '/img/huanyuan/',// 资源路径
     avatar: 'avatar.png',
     name: '罗焕远',
     nameEn: 'huanyuan.luo',
@@ -161,7 +160,7 @@ const userInfo = [
   },
   {
     id: 6,
-    ImageUrl: httptsCos+'/img/jialiang/',// 资源路径
+    ImageUrl: '/img/jialiang/',// 资源路径
     avatar: 'avatar.png',
     name: '罗嘉亮',
     nameEn: 'jialiang.luo',
