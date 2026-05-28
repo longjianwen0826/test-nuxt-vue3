@@ -21,14 +21,21 @@ import { useRoute } from 'nuxt/app'
 const route = useRoute()
 // 判断水合完成前不显示页面(避免页面闪一下不好看)
 const isHydrated = ref(false)
-onMounted(() => {
-  isHydrated.value = true
-})
-// 判断当前是不是登录页
+// 判断当前是不是需要头部底部
 const isLoginPage = computed(() => {
   // 不包含在NuxtLayout组件内的白名单
   let whiteList = ['/login','/user']
-  return whiteList.includes(route.path)
+  let isTrue = false
+  for (let i = 0; i < whiteList.length; i++) {
+    if(route.path.includes(whiteList[i]))  {
+      isTrue = true
+      break
+    }
+  }
+  return isTrue
+})
+onMounted(() => {
+  isHydrated.value = true
 })
 </script>
 <style scoped>
@@ -39,7 +46,6 @@ const isLoginPage = computed(() => {
   background: rgba(243, 244, 246, var(--tw-bg-opacity));
   z-index: 9999;
 }
-
 </style>
 <style>
 /* 万能隐藏滚动条 */

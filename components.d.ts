@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']
+    NCard: typeof import('naive-ui')['NCard']
     NCarousel: typeof import('naive-ui')['NCarousel']
     NCarouselItem: typeof import('naive-ui')['NCarouselItem']
     NCheckbox: typeof import('naive-ui')['NCheckbox']
@@ -21,6 +22,7 @@ declare module 'vue' {
     NImage: typeof import('naive-ui')['NImage']
     NImagePreview: typeof import('naive-ui')['NImagePreview']
     NInput: typeof import('naive-ui')['NInput']
+    NInputNumber: typeof import('naive-ui')['NInputNumber']
     NResult: typeof import('naive-ui')['NResult']
     NTag: typeof import('naive-ui')['NTag']
     RouterLink: typeof import('vue-router')['RouterLink']

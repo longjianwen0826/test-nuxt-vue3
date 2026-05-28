@@ -2,7 +2,7 @@
   <!-- 整体页面 -->
   <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
     <!-- 顶部酷炫欢迎区域 -->
-    <div class="w-full bg-gradient-to-r from-purple-600 text-white py-14 px-6">
+    <div class="w-full bg-gradient-to-r from-purple-400 text-white py-14 px-6">
       <div class="max-w-5xl mx-auto text-center">
         <h1 
           class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-3 tracking-wide

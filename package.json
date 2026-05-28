@@ -22,6 +22,7 @@
     "vueuc": "^0.4.65"
   },
   "devDependencies": {
+    "@types/node": "^25.9.1",
     "@vicons/ionicons5": "^0.13.0",
     "nuxt-windicss": "^3.0.1",
     "unplugin-vue-components": "^28.8.0"

@@ -42,6 +42,7 @@
   <div class="w-[100%] h-[60px]"></div>
 </template>
 <script setup>
+  import { ref, onMounted, onUnmounted } from 'vue'
   import { getImageUrl } from "@/utils/image"
   import { userInfo } from "@/utils/userMessage"
   import { useRouter } from 'nuxt/app'
@@ -50,58 +51,79 @@
   const router = useRouter()
   const route = useRoute()
   const menuOpen = ref(false)
-  let menus = []
-  const updateRoute = () =>{
-    menus = [{
+  // 固定路由信息
+  const menus = reactive([{
       name: '首页',
       path: '/'
-    }]
-    userInfo.forEach( (item) => {
-      menus.push(
-        {
-          name: item.name,
-          path: `/list/live/${item.id}`
-        }
-      )
-    })
-    menus.push(
-      {
-        name: '关于',
-        path: '/bbs/0/1'
-      },
-    )
-    menus.push(
-      {
-        name: '联系',
-        path: '/paper/1'
-      },
-    )
-  }
-  updateRoute()
-
-  function handelOpen(path){
-    navigateTo(path)
-  }
-
-  
-  const options = [
+    },
+    {
+      name: '关于',
+      path: '/bbs/0/1'
+    },
+    // {
+    //   name: '联系',
+    //   path: '/paper/1'
+    // },
+  ])
+  // 头像选择选项
+  const options = reactive([
     {
       label: '用户中心',
-      key: 'conter'
+      key: 'conter',
     },
     {
       label: '退出登录',
       key: 'logout',
     }
-  ] 
+  ])
+  // 处理路由信息和选择选项信息
+  const updateDataFun = async () =>{
+    const res = await $fetch('/api/friends')
+    if(res.data && res.data.length > 0){
+      let routeList = []
+      res.data.forEach( (item) => {
+        routeList.push(
+          {
+            name: item.name,
+            path: `/list/live/${item.id}`
+          }
+        )
+      })
+      menus.splice(1,0,...routeList)
+    }
+
+    if(userStore.userInfo.name == '龙建文'){
+      options.splice(1,0,{
+        label: '用户管理',
+        key: 'userList'
+      })
+    }else{
+      options.splice(1,0,{
+        label: '用户修改',
+        key: 'user'
+      })
+    }
+  }
+
+  function handelOpen(path){
+    navigateTo(path)
+  }
+
   const handleSelect =  (key) => {
     if(key == 'logout') {
       userStore.logout()
       router.push('/login')
+    }else if(key == 'userList'){
+      router.push('/userList')
+    }else if(key == 'user'){
+      router.push(`/user/${userStore.userInfo.id}`)
     }else{
-      router.push('/user')
+      router.push('/userInfo')
     }
   }
+  onMounted(() => {
+    updateDataFun()
+  })
 </script>
 <style scoped>
 .navbar{

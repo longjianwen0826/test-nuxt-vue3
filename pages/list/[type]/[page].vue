@@ -1,9 +1,10 @@
 <template>
   <!-- 传入你的数据 -->
-  <PersonCard :person="userInfo[indexValue]" />
+  <PersonCard :person="userInfo" />
 </template>
 <script setup >
-  import { userInfo } from "@/utils/userMessage"
   const route = useRoute()
-  const indexValue = parseInt(route.params.page)-1
+  const userInfo = reactive({})
+  const res = await $fetch(`/api/friends/${route.params.page}`)
+  Object.assign(userInfo, res.data)
 </script>

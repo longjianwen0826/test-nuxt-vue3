@@ -19,13 +19,4 @@
 </template>
 <script setup>
 import { getImageUrl } from "@/utils/image.ts"
-// 匹配 public/img/utils 下所有文件
-// const files = import.meta.glob('/public/img/utils/*', { eager: true })
-
-// // 提取文件名并过滤 图片/视频
-// const mediaList = Object.keys(files)
-//   .map(path => path.replace('/public', '')) // 变成 /img/utils/xxx.jpg
-//   .filter(path => /\.(jpg|jpeg|png|gif|mp4|webm)$/i.test(path))
-
-// console.log('媒体列表：', mediaList)
 </script>

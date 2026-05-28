@@ -12,9 +12,9 @@
         require-mark-placement="left"
         class="login-form"
       >
-        <n-form-item label="账号：" path="account">
+        <n-form-item label="账号：" path="userName">
           <n-input
-            v-model:value="form.account"
+            v-model:value="form.userName"
             placeholder="请输入账号"
             size="large"
           />
@@ -51,7 +51,6 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'nuxt/app'
-import { userInfo } from "@/utils/userMessage"
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 
@@ -62,11 +61,11 @@ const router = useRouter()
 const formRef = ref(null)
 const isChecked = ref(false)
 const form = reactive({
-  account: '',
+  userName: '',
   password: ''
 })
 const rules = {
-  account: {
+  userName: {
     required: true,
     message: '请输入你的狗名😯',
     trigger: ['input']
@@ -82,7 +81,7 @@ const rules = {
 const getCheckedFUn = () => {
     if(userStore.checkedInfo){
         isChecked.value = userStore.checkedInfo.isChecked
-        form.account = userStore.checkedInfo.account
+        form.userName = userStore.checkedInfo.userName
         form.password = userStore.checkedInfo.password
     }else{
         isChecked.value = false
@@ -94,7 +93,7 @@ const setCheckedFUn = () => {
     if(isChecked.value){
         info = {
             isChecked: true,
-            account: form.account,
+            userName: form.userName,
             password: form.password
         }
     }
@@ -104,28 +103,28 @@ const setCheckedFUn = () => {
 
 // 登录逻辑
 const login = () => {
-  formRef.value?.validate((errors) => {
+  formRef.value?.validate( async (errors) => {
     if (!errors) {
-        // message.success('Valid')
-        let info = null
-        for (let i = 0; i < userInfo.length; i++) {
-            if (userInfo[i].name === form.account && form.password == '123456') {
-                info = userInfo[i]; // 保存登录用户对象
-                break; // 找到立刻退出循环，不继续找
-            }
-        }
-        if(info){
+        try {
+          const res = await $fetch('/api/login', {
+            method: 'POST',
+            body: form
+          })
+          if (res.code === 200) {
             // 模拟登录成功(保存信息)
-            userStore.login(info)
+            userStore.login(res.data)
             userStore.updateCheckedInfo(setCheckedFUn())
             //  message.success('登录成功')
             router.push('/') // 跳首页
-        }else{
-            console.log("失败")
-            // message.warning('输的不对，去想清楚再填！！！')
+          } else {
+            console.log(res.msg)
+          }
+        } catch (e) {
+          console.log("请求失败")
         }
     }
     else {
+        console.log("请输入你的狗名和密码")
         // message.warning('请输入你的狗名和密码')
     }
   })

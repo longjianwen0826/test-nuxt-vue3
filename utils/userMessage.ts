@@ -185,9 +185,4 @@ const userInfo = [
     ]
   },
 ]
-const allInfo = {
-  des: '',
-  date: '',
-  image: [],
-}
-export { userInfo, allInfo }
+export { userInfo }
