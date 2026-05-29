@@ -94,7 +94,7 @@ const userInfo = [
         date: '2025:03:21',
       },
       {
-        imageName: ['3.png','4.png'],
+        imageName: ['3.png','4.png','5.png'],
         des: '暂无描述',
         date: '2023:03:21',
       },
@@ -181,6 +181,11 @@ const userInfo = [
         imageName: ['1.png'],
         des: '暂无描述',
         date: '2025:03:21',
+      },
+      {
+        imageName: ['1.mp4'],
+        des: '历史醉酒时刻，一泻千里',
+        date: '2025:03:09',
       },
     ]
   },

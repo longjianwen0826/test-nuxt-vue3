@@ -1,5 +1,5 @@
 <template>
-  <div class="footer bg-[#1b1b1b] text-white py-4 fixed bottom-0 left-0 right-0 ">
+  <div class="footer text-white py-4 fixed bottom-0 left-0 right-0 ">
     <div class="container ">
         <!-- <div class="mb-1">© 2026 企业官网 版权所有</div> -->
         <div class="text-sm text-gray-400">电话：400-123-4567 </div>
@@ -14,5 +14,6 @@
 
 .footer{
   z-index: 100;
+  background: var(--bg-color);
 }
 </style>

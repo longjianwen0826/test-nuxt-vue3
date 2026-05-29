@@ -85,9 +85,10 @@
             <!-- 轮播：图片 + 视频 混合自动判断 -->
             <n-carousel
               v-if="item.imageName.length"
+              interval="5000"
               :touchable="item.imageName.length>=2"
               class="w-full h-52 md:h-64 rounded-xl overflow-hidden mb-4"
-              :autoplay="false"
+              :autoplay="autoplayEnable"
               loop
               show-arrows="hover"
             >
@@ -100,8 +101,10 @@
                   controlslist="nodownload nofullscreen noremoteplayback"
                   disablepictureinpicture
                   class="w-full h-full object-contain bg-black"
+                  @play="stopCarousel()" 
+                  @pause="resumeCarousel()" 
+                  @ended="resumeCarousel()"
                 />
-
                 <!-- 图片 + 点击预览 -->
                 <img
                   v-else
@@ -121,7 +124,11 @@
     </div>
 
     <!-- 图片预览组件 -->
-    <n-image-preview v-model:visible="previewVisible" :src="previewSrc" />
+      <n-image-preview 
+        v-model:show="previewVisible" 
+        :src="previewSrc" 
+        :teleport-disabled="true"
+      />
   </div>
 </template>
 
@@ -136,14 +143,25 @@ const props = defineProps({
     required: true
   }
 })
-
 // 图片预览
 const previewVisible = ref(false)
 const previewSrc = ref('')
 
+// 控制轮播自动播放
+const autoplayEnable = ref(true)
+
+// 停止轮播
+const stopCarousel = () => {
+  autoplayEnable.value = false
+}
+// 恢复轮播
+const resumeCarousel = () => {
+  autoplayEnable.value = true
+}
+
+// 图片预览函数
 const previewImage = (url) => {
   previewSrc.value = url
-  console.log("url===========",url)
   previewVisible.value = true
 }
 </script>

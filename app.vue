@@ -6,20 +6,31 @@
   </n-config-provider> -->
   <!-- 核心：水合完成前不显示页面 -->
   <n-config-provider inline-theme-disabled>
-    <div v-if="isHydrated">
-      <NuxtLayout v-if="!isLoginPage">
-        <NuxtPage/>
-      </NuxtLayout>
-      <NuxtPage v-else/>
-    </div>
-    <div v-else class="loading"></div>
+    <n-message-provider>
+      <n-notification-provider>
+        <n-dialog-provider>
+
+          <div v-if="isHydrated">
+            <NuxtLayout v-if="!isLoginPage">
+              <NuxtPage/>
+            </NuxtLayout>
+            <NuxtPage v-else/>
+          </div>
+          <div v-else class="loading"></div>
+      
+        </n-dialog-provider>
+      </n-notification-provider>
+    </n-message-provider>
   </n-config-provider>
 </template>
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'nuxt/app'
+import {
+  NMessageProvider,
+  NNotificationProvider,
+  NDialogProvider
+} from 'naive-ui'
 const route = useRoute()
-// 判断水合完成前不显示页面(避免页面闪一下不好看)
+
 const isHydrated = ref(false)
 // 判断当前是不是需要头部底部
 const isLoginPage = computed(() => {

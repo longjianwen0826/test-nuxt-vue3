@@ -9,7 +9,7 @@
             ☰
           </button>
           <!-- Logo -->
-          <div class="text-xl font-bold text-primary mr-6" @click="handelOpen('/')">小龙测试</div>
+          <div class="text-xl font-bold text-primary ml-4 mr-4 logo_text" @click="handelOpen('/')">六人组</div>
           <!-- PC端菜单 -->
           <nav class="hidden md:flex items-center space-x-6">
             <NuxtLink :to="item.path" class="nav_link"
@@ -22,7 +22,7 @@
       
       <!-- 头像点击多功能选择 -->
       <n-dropdown :options="options" @select="handleSelect">
-         <n-avatar round size="small" :src="getImageUrl(userStore.userInfo.avatar, userStore.userInfo.ImageUrl)" alt="头像" class="ml-auto"/>
+         <n-avatar round size="small" :src="getImageUrl(userStore.userInfo?.avatar, userStore.userInfo?.ImageUrl)" alt="头像" class="ml-auto"/>
       </n-dropdown>
       
       <!-- 移动端侧边菜单-->
@@ -44,7 +44,7 @@
 <script setup>
   import { ref, onMounted, onUnmounted } from 'vue'
   import { getImageUrl } from "@/utils/image"
-  import { userInfo } from "@/utils/userMessage"
+  // import { userInfo } from "@/utils/userMessage"
   import { useRouter } from 'nuxt/app'
   import { useUserStore } from '@/stores/user'
   const userStore = useUserStore()
@@ -154,5 +154,32 @@
 }
 .menu-item-active{
   color: var(--text-color-active);
+}
+
+.logo_text {
+  cursor: pointer;
+  /* 核心样式 */
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 900;
+  white-space: nowrap;
+
+  /* 倾斜 45° + 中间缩放 */
+  transform: skew(-45deg) scaleY(0.8);
+
+  /* 文字渐变 */
+  background: linear-gradient(135deg, #4f46e5, #a855f7, #ec4899, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* 立体效果 */
+  text-shadow: 
+    1px 1px 0 #fff,
+    2px 2px 5px rgba(0,0,0,0.2),
+    3px 3px 10px rgba(79,70,229,0.3);
+
+  /* 描边 */
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.3);
 }
 </style>

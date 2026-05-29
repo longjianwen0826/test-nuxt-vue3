@@ -5,7 +5,7 @@
       <div class="container text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4" style="text-shadow: 0 0 5px #2196F3, 0 0 10px #2196F3;">欢迎来到六人组官网</h1>
         <p class="text-lg md:text-xl mb-8" style="text-shadow: 2px 2px 0 #666;">专注傻嘿，沙雕，整蛊解决方案，助力往精神病转型</p>
-        <button class="btn-primary" style="text-shadow: 2px 2px 0 #666;">了解更多</button>
+        <button class="btn-primary" style="text-shadow: 2px 2px 0 #666;" @click="warning">点击了解更多</button>
       </div>
     </section>
 
@@ -35,4 +35,18 @@
   </div>
 </template>
 <script setup>
+import { useMessage } from 'naive-ui'
+
+// ✅ 正确获取
+const message = useMessage()
+
+const warning = () => {
+  console.log("message==========",message)
+  // ✅ 只在客户端执行
+  if (process.client) {
+    message.warning('找抽是不是！！ 没有更多了还想了解什么更多')
+  }
+}
 </script>
+<style scoped>
+</style>
