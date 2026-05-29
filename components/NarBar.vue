@@ -5,14 +5,14 @@
       <div class="menu">
         <div class="flex items-center justify-between h-16">
           <!-- 移动端汉堡按钮 -->
-          <button class="md:hidden text-gray-700 text-xl mr-2" @click="menuOpen = !menuOpen">
+          <button class="md:hidden text-xl mr-2" @click="menuOpen = !menuOpen">
             ☰
           </button>
           <!-- Logo -->
           <div class="text-xl font-bold text-primary mr-6" @click="handelOpen('/')">小龙测试</div>
           <!-- PC端菜单 -->
           <nav class="hidden md:flex items-center space-x-6">
-            <NuxtLink :to="item.path" class="text-gray-700 hover:text-primary" 
+            <NuxtLink :to="item.path" class="nav_link"
               :class="{'menu-item-active' : (route.path == item.path)}"
               v-for="(item, index) in menus" :key="index">{{ item.name }}</NuxtLink>
           </nav>
@@ -128,7 +128,9 @@
 <style scoped>
 .navbar{
   z-index: 100;
-  @apply bg-white fixed top-0 left-0 right-0 shadow-sm;
+  @apply fixed top-0 left-0 right-0 shadow-sm;
+  background: var( --bg-color);
+  color: var(--text-color);
 }
 .menu{
   @apply flex items-center;
@@ -138,16 +140,19 @@
   cursor: pointer;
   @apply px-2 py-1 rounded hover:(bg-blue-50 text-blue-700) active:(bg-blue-100); 
 }
-.menu-item-active{
-  @apply bg-blue-100 text-blue-600; 
-}
 .mobile-menu-enter-from,
 .mobile-menu-leave-to { max-height:0; opacity:0; }
 .mobile-menu-enter-active,
 .mobile-menu-leave-active { max-height:300px; opacity:1; transition:all 0.3s; }
 .tab_active{
-  background: #E5E7EB;
+  background: var( --bg-color);
   font-weight: 600;
-  color: #3E7EFE;
+  color: var(--text-color-active);
+}
+.nav_link{
+  color: var(--text-color);
+}
+.menu-item-active{
+  color: var(--text-color-active);
 }
 </style>

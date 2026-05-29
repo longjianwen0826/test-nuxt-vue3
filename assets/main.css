@@ -1,3 +1,19 @@
+/* 全局主题变量 —— 整个项目都能用 */
+:root {
+  --primary-color: #000000;      /* 主色（绿色） */
+  --second-color: #444444;      /* 辅助色（蓝色） */
+  --bg-color: #181818;     /* 背景色 */
+  --text-color: rgba(156, 163, 175);;         /* 文字深色 */
+  --text-color-active: white;         /* 文字深色 */
+
+  /* 我顺便给你补一套常用的，直接用 */
+  --white: #fff;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --border-radius: 8px;
+  --shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
 .container{
     width: 100%;
     max-width: 1200px;
@@ -5,4 +21,35 @@
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
+}
+/* 1. 左右渐变（推荐） */
+.background-gradient-right {
+  background: linear-gradient(to right, var(--bg-color), var(--second-color));
+  color: var(--text-color);
+}
+.background-gradient-left {
+  background: linear-gradient(to left, var(--bg-color), var(--second-color));
+  color: var(--text-color);
+}
+/* 2. 左上→右下渐变 */
+.background-gradient {
+  background: linear-gradient(135deg, var(--bg-color), var(--second-color));
+  color: var(--text-color);
+}
+/* 3. 透明柔和渐变（卡片 / 导航栏超好看） */
+.background-gradient {
+  background: linear-gradient(to right, #008B1B15, #00A4DE15);
+}
+/* 字体渐变 */
+.text-gradient-right {
+  background: linear-gradient(to right, var(----text-color), var(--second-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-right {
+  background: linear-gradient(to left, var(----text-color), var(--second-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

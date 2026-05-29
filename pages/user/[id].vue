@@ -21,12 +21,13 @@
         <n-input v-model:value="form.nameEn" />
       </n-form-item>
 
-      <n-form-item label="资源路径">
+      <!-- <n-form-item label="资源路径">
         <n-input v-model:value="form.ImageUrl" />
-      </n-form-item>
+      </n-form-item> -->
 
       <n-form-item label="头像文件名">
         <n-input v-model:value="form.avatar" />
+        <!-- <upload :imageurl="form.ImageUrl" :imageName="form.avatar"/> -->
       </n-form-item>
 
       <n-form-item label="年龄">
